@@ -219,7 +219,12 @@ table { border-collapse: collapse; border-spacing: 0; }
 #persona1 {    
     text-align: center;
     background: #232121 ;
-        color: white;
+    color: white;
+}
+#persona3 {    
+    text-align: center;
+    background: #232121 ;
+    color: white;
 }
 
 
