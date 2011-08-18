@@ -226,7 +226,9 @@ table { border-collapse: collapse; border-spacing: 0; }
     background: #232121 ;
     color: white;
 }
-
+#persona3 pre{    
+    text-align: left;
+}
 
 /* ==================
    Initializr Theme

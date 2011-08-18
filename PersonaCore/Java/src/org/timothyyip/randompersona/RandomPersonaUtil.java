@@ -21,7 +21,7 @@ public class RandomPersonaUtil
     {
         for (PersonaModel model: generatePersona(1)){
             System.out.println(model);
-            System.out.println("\n");
+            System.out.println(model.getFirstName());
         }
     }
 
