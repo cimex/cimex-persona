@@ -97,15 +97,65 @@
                         <h3>Download now</h3>
                         <p>
                             To use it in your Java application, download the core <a href="https://github.com/cimex/cimex-persona/tree/master/Dist">here.</a>  Remember to include the dependencies in your class path, below is a quick start:
-                            <pre class="prettyprint">
+                        <pre class="prettyprint">
             for (PersonaModel model: generatePersona(100)){
                 System.out.println(model);
                 System.out.println(model.getFirstName());
             }        
-                            </pre>
+                        </pre>
                         </p>
                     </div>
                 </div>
+            </div>
+
+            <!--Contenu5-->
+            <div>
+                <div class="contenu">
+                    <div class="img-right">
+                        <img src="git_stamp_red.png" alt="" width="150px" />
+                        <h3>Try now</h3>
+                        Title: <input id="try-title" type="text"/><br/>
+                        First name: <input id="try-first-name" type="text"/><br/>
+                        Last name: <input id="try-last-name" type="text"/><br/>
+                        Full name: <input id="try-full-name" type="text"/><br/>
+                        Company name: <input id="try-company-name" type="text"/><br/>
+                        Email: <input id="try-email" type="text"/><br/>
+                        Job title: <input id="try-job-title" type="text"/><br/>
+                        DOB: <input id="try-dob" type="text"/><br/>
+                        isMale? <input id="try-gender" type="text"/><br/>
+                        <a id="try-now" href="#" style="color:red">Try now</a>
+                    </div>
+                </div>
+                <script>
+                    $(function(){
+                        $('#try-now').bind('click', function() {
+                            $.ajax({
+                                url: '/CimexPersonaWeb/persona/json/1',  
+                                success: function( data ) {
+                          
+                                    
+                                   if(data.personas[0]){
+                                    $('#try-title').val(data.personas[0].title);
+                                    $('#try-first-name').val(data.personas[0].firstName);
+                                    $('#try-last-name').val(data.personas[0].lastName);
+                                    $('#try-full-name').val(data.personas[0].fullName);
+                                    $('#try-company-name').val(data.personas[0].companyName);
+                                    $('#try-email').val(data.personas[0].email);
+                                    $('#try-job-title').val(data.personas[0].jobTitle);
+                                    //console.log(new Date(parseInt(data.personas[0].dateOfBirth.substr(6))));
+                                    var dateOfBirth =new Date(data.personas[0].dateOfBirth);
+                                    
+            $('#try-dob').val(dateOfBirth.getDate() + "/" + (dateOfBirth.getMonth()+1) + "/" + dateOfBirth.getFullYear());
+                                    
+                                    $('#try-gender').val(data.personas[0].male);
+                                   }                                   
+                                }
+                            });
+                          return false;
+                        });
+
+                    });
+                </script>
             </div>
         </div>
 
@@ -115,11 +165,18 @@
 
 
 
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-                g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-                s.parentNode.insertBefore(g,s)}(document,'script'));
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-25481683-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
         </script>
 
         <!--[if lt IE 7 ]>

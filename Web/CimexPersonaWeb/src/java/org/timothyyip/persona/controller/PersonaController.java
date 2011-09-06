@@ -4,9 +4,8 @@
  */
 package org.timothyyip.persona.controller;
 
-import java.util.List;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.timothyyip.randompersona.RandomPersonaUtil;
@@ -23,15 +22,28 @@ public class PersonaController {
 
     @RequestMapping(value = "/json/")
     public ModelAndView getJson() {
-        
-        ModelAndView mav = new ModelAndView("jsonView", BindingResult.MODEL_KEY_PREFIX + "books", RandomPersonaUtil.generatePersona(5));
+        return getJsons(5);
+    }
+    
+    @RequestMapping(value = "/json/{count}")
+    public ModelAndView getJsons(@PathVariable("count") Integer count) {
+        if(count==null)count = 5;
+        if(count>500)count = 500;
+        ModelAndView mav = new ModelAndView("jsonView", "personas", RandomPersonaUtil.generatePersona(count));
         return mav;
     }
     
+    
     @RequestMapping(value = "/xml/")
-    public ModelAndView getAllBooks() {
-        
-        ModelAndView mav = new ModelAndView("xmlView", BindingResult.MODEL_KEY_PREFIX + "books", RandomPersonaUtil.generatePersona(5));
+    public ModelAndView getXML() {
+        return getXMLs(5);
+    }
+    
+    @RequestMapping(value = "/xml/{count}")
+    public ModelAndView getXMLs(@PathVariable("count") Integer count) {
+        if(count==null)count = 5;
+        if(count>500)count = 500;
+        ModelAndView mav = new ModelAndView("xmlView", "personas", RandomPersonaUtil.generatePersona(count));
         return mav;
     }
 }
