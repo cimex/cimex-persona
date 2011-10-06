@@ -1,0 +1,188 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title></title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700' rel='stylesheet' type='text/css' />
+        <link href='http://fonts.googleapis.com/css?family=News+Cycle' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/prettify.css">
+        <script src="js/libs/modernizr-2.0.min.js"></script>
+        <script src="js/libs/respond.min.js"></script>
+
+
+        <script src="js/libs/jquery-1.6.2.min.js" type="text/javascript"></script> 
+        <script src="js/libs/jquery.scrollTo.js" type="text/javascript"></script> 
+        <script src="js/libs/prettify.js" type="text/javascript"></script> 
+        <script src="js/libs/jquery.ascensor.js" type="text/javascript"></script> 
+        <script src="js/mylibs/myscript.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <!--div id="header-container">
+            <header class="wrapper">
+                <h1 id="title">Cimex Persona</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div-->
+
+
+        <div id="content">
+            <!--Contenu1-->
+            <div>
+                <div class="contenu">
+                    <header>
+                        <div class="img-left">
+                            <img src="mask.jpg" height="120px" alt="" />
+                            <h2 id="title">Cimex: <span class="persona">Persona</span></h2>
+                            <p><strong>Cimex:Persona</strong> is a tool to generate random placeholder user data.  
+                                Whilst &#8220;Lorem Ipsom&#8221; can deal with your empty static content area, user driven websites needs higher standard of user data to simulate.  
+                                Having data in early in a new website's life cycle will increase development productivity by a long way.  
+                            </p>
+
+                        </div>
+
+                    </header>
+                </div>
+            </div>
+
+
+            <!--Contenu2-->
+            <div>
+                <div class="contenu">
+                    <div class="img-right">
+                        <img src="img/GoogleCircle.png" alt="" />
+                        <h3>Better contextual presentation</h3>
+                        <p>
+                            Showing you client development progress and convincing them that their investment is well spent is not an easy task.  Nor does it
+                            bode well when your awesome user directory and social interaction demo is full of non-contextual users called 'test1, test2' etc..
+                        </p>	
+
+                    </div>
+                </div>
+            </div>
+
+            <!--Contenu3-->
+            <div>
+                <div class="contenu">
+                    <div class="img-left">
+                        <img src="bug.jpg" alt="" />
+                        <h3>Spot bugs early</h3>
+                        <p>It's one thing outputting a 5 character name ('test 1 for example'), but how do you know what will happen to the UI component if you output a 
+                            long name?  How about a name with special characters?  Having meaningful data means you can flag issues early and not leave it till it's too late.                       
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Contenu4-->
+            <div>
+                <div class="contenu">
+                    <div class="img-left">
+                        <img src="git_stamp_red.png" alt="" width="150px" />
+                        <h3>Download now</h3>
+                        <p>
+                            To use it in your Java application, download the core <a href="https://github.com/cimex/cimex-persona/tree/master/Dist">here.</a>  Remember to include the dependencies in your class path, below is a quick start:
+                        <pre class="prettyprint">
+            for (PersonaModel model: generatePersona(100)){
+                System.out.println(model);
+                System.out.println(model.getFirstName());
+            }        
+                        </pre>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Contenu5-->
+            <div>
+                <div class="contenu">
+                    <div class="img-right">
+                        <img src="git_stamp_red.png" alt="" width="150px" />
+                        <h3>Try now</h3>
+                        Title: <input id="try-title" type="text"/><br/>
+                        First name: <input id="try-first-name" type="text"/><br/>
+                        Last name: <input id="try-last-name" type="text"/><br/>
+                        Full name: <input id="try-full-name" type="text"/><br/>
+                        Company name: <input id="try-company-name" type="text"/><br/>
+                        Email: <input id="try-email" type="text"/><br/>
+                        Job title: <input id="try-job-title" type="text"/><br/>
+                        DOB: <input id="try-dob" type="text"/><br/>
+                        isMale? <input id="try-gender" type="text"/><br/>
+                        <a id="try-now" href="#" style="color:red">Try now</a>
+                    </div>
+                </div>
+                <script>
+                    $(function(){
+                        $('#try-now').bind('click', function() {
+                            $.ajax({
+                                url: '/CimexPersonaWeb/persona/json/1',  
+                                success: function( data ) {
+                          
+                                    
+                                   if(data.personas[0]){
+                                    $('#try-title').val(data.personas[0].title);
+                                    $('#try-first-name').val(data.personas[0].firstName);
+                                    $('#try-last-name').val(data.personas[0].lastName);
+                                    $('#try-full-name').val(data.personas[0].fullName);
+                                    $('#try-company-name').val(data.personas[0].companyName);
+                                    $('#try-email').val(data.personas[0].email);
+                                    $('#try-job-title').val(data.personas[0].jobTitle);
+                                    //console.log(new Date(parseInt(data.personas[0].dateOfBirth.substr(6))));
+                                    var dateOfBirth =new Date(data.personas[0].dateOfBirth);
+                                    
+            $('#try-dob').val(dateOfBirth.getDate() + "/" + (dateOfBirth.getMonth()+1) + "/" + dateOfBirth.getFullYear());
+                                    
+                                    $('#try-gender').val(data.personas[0].male);
+                                   }                                   
+                                }
+                            });
+                          return false;
+                        });
+
+                    });
+                </script>
+            </div>
+        </div>
+
+
+
+        <a href="https://github.com/cimex/cimex-persona"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+
+
+
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-25481683-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+
+        <!--[if lt IE 7 ]>
+                <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+                <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+        <![endif]-->
+
+    </body>
+</html>
